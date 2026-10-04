@@ -74,3 +74,25 @@ function tampilkanEvent() {
   }
   wadah.innerHTML = html;
 }
+
+/* ===== 4. FILTER DAN PENCARIAN ===== */
+const semuaChip = document.querySelectorAll(".chip");
+
+semuaChip.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    kategoriAktif = chip.dataset.kategori;
+    semuaChip.forEach((c) => c.setAttribute("aria-pressed", "false"));
+    chip.setAttribute("aria-pressed", "true");
+    tampilkanEvent();
+  });
+});
+
+const kolomCari = document.querySelector("#cari");
+if (kolomCari) {
+  kolomCari.addEventListener("input", () => {
+    kataCari = kolomCari.value;
+    tampilkanEvent();
+  });
+}
+
+tampilkanEvent();
