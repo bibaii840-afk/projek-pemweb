@@ -22,3 +22,55 @@ tombolMenu.addEventListener("click", () => {
   const terbuka = menuNav.classList.contains("aktif");
   tombolMenu.setAttribute("aria-expanded", terbuka);
 });
+
+/* ===== 3. TAMPILKAN DAFTAR EVENT ===== */
+const wadah = document.querySelector("#daftar-event");
+
+function tampilkanEvent() {
+  if (!wadah) return;
+
+  // Perulangan + percabangan: pilih event yang cocok dengan filter dan pencarian
+  let hasil = [];
+  for (const e of events) {
+    const cocokKategori = kategoriAktif === "semua" || e.kategori === kategoriAktif;
+    const cocokKata = e.judul.toLowerCase().includes(kataCari.toLowerCase());
+    if (cocokKategori && cocokKata) {
+      hasil.push(e);
+    }
+  }
+
+  // Di beranda hanya tampil 3 event (lihat data-batas di HTML)
+  if (wadah.dataset.batas) {
+    hasil = hasil.slice(0, Number(wadah.dataset.batas));
+  }
+
+  if (hasil.length === 0) {
+    wadah.innerHTML = "<p>Event tidak ditemukan. Coba kata kunci lain.</p>";
+    return;
+  }
+
+  let html = "";
+  for (const e of hasil) {
+    let status = "";
+    let tombol = "";
+    if (e.kuota > 0) {
+      status = '<span class="status tersedia">Tersedia</span>';
+      tombol = `<a class="btn btn-kecil" href="daftar.html?id=${e.id}">Daftar</a>`;
+    } else {
+      status = '<span class="status penuh">Penuh</span>';
+      tombol = '<a class="btn btn-kecil" aria-disabled="true">Kuota penuh</a>';
+    }
+
+    html += `
+      <article class="kartu">
+        <img src="${e.gambar || ''}" alt="Gambar ${e.kategori}">
+        <div class="kartu-isi">
+          <h3>${e.judul}</h3>
+          <p class="meta">${e.tanggal} | Sisa kuota: ${e.kuota}</p>
+          ${status}
+          ${tombol}
+        </div>
+      </article>`;
+  }
+  wadah.innerHTML = html;
+}
