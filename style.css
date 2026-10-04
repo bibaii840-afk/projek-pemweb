@@ -40,3 +40,28 @@ a { color: var(--utama); }
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
 }
+
+/* Header dan navigasi (Flexbox) */
+.situs-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spasi-2) var(--spasi-3);
+  border-bottom: 1px solid #E5E7EB;
+  background: var(--putih);
+}
+.logo { font-family: var(--font-heading); font-weight: 600; font-size: 1.25rem; color: var(--utama); text-decoration: none; }
+.menu-toggle {
+  background: none; border: 1px solid var(--utama); color: var(--utama);
+  border-radius: var(--radius); padding: var(--spasi-1) var(--spasi-2);
+  font: inherit; cursor: pointer;
+}
+.nav-menu { display: none; width: 100%; }
+.nav-menu.aktif { display: block; }
+.nav-menu ul { list-style: none; margin: var(--spasi-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--spasi-1); }
+.nav-menu a { display: block; padding: var(--spasi-1) 0; text-decoration: none; color: var(--teks); font-weight: 500; }
+.nav-menu a:hover, .nav-menu a[aria-current="page"] { color: var(--utama); }
+
+main { padding: var(--spasi-3); max-width: 1100px; margin: 0 auto; }
+section { margin-bottom: var(--spasi-4); }
