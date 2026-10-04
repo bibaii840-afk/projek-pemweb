@@ -137,3 +137,23 @@ section { margin-bottom: var(--spasi-4); }
 
 /* Footer */
 .situs-footer { background: var(--teks); color: #E0E7FF; padding: var(--spasi-3); text-align: center; }
+
+/* Tablet */
+@media (min-width: 768px) {
+  h1 { font-size: 2.25rem; }
+  .menu-toggle { display: none; }
+  .nav-menu { display: block; width: auto; }
+  .nav-menu ul { flex-direction: row; margin: 0; gap: var(--spasi-3); }
+  .daftar-event { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  h1 { font-size: 2.75rem; }
+  .hero { padding: 64px var(--spasi-4); }
+  .daftar-event { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
