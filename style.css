@@ -65,3 +65,24 @@ a { color: var(--utama); }
 
 main { padding: var(--spasi-3); max-width: 1100px; margin: 0 auto; }
 section { margin-bottom: var(--spasi-4); }
+
+/* Hero */
+.hero {
+  background: var(--utama); color: var(--putih);
+  border-radius: 12px; padding: var(--spasi-4) var(--spasi-3);
+}
+.hero h1, .hero p { color: var(--putih); }
+.hitung { font-weight: 500; color: #FDE68A; }
+
+/* Tombol */
+.btn {
+  display: inline-block; border: 0; border-radius: var(--radius);
+  background: var(--utama); color: var(--putih);
+  font: 500 1rem var(--font-body); padding: 10px var(--spasi-3);
+  text-decoration: none; cursor: pointer; transition: background .15s;
+}
+.btn:hover { background: var(--utama-gelap); }
+.btn-aksen { background: var(--aksen); color: #412402; }
+.btn-aksen:hover { background: #D98A06; }
+.btn-kecil { padding: 6px var(--spasi-2); font-size: .9rem; }
+.btn[aria-disabled="true"] { background: #D1D5DB; color: #4B5563; pointer-events: none; }
