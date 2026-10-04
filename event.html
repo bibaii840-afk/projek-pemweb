@@ -18,3 +18,25 @@
             </ul>
         </nav>
     </header>
+
+    <main>
+        <section>
+            <h1>Daftar event</h1>
+
+            <div class="filter">
+                <button class="chip" data-kategori="semua" aria-pressed="true">Semua</button>
+                <button class="chip" data-kategori="seminar" aria-pressed="false">Seminar</button>
+                <button class="chip" data-kategori="lomba" aria-pressed="false">Lomba</button>
+                <button class="chip" data-kategori="workshop" aria-pressed="false">Workshop</button>
+            </div>
+
+            <label for="cari" class="sr-only">Cari event</label>
+            <input class="cari" id="cari" type="search" placeholder="Cari event, misalnya coding">
+
+            <div class="daftar-event" id="daftar-event"></div>
+        </section>
+    </main>
+
+    <footer class="situs-footer">
+        <p>&copy; 2026 KampusEvent. Dibuat untuk tugas Pemrograman Web.</p>
+    </footer>
