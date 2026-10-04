@@ -120,3 +120,20 @@ section { margin-bottom: var(--spasi-4); }
 .status.tersedia { background: #DCFCE7; color: #14532D; }
 .status.penuh { background: #FEE2E2; color: #7F1D1D; }
 .kosong { color: var(--teks-redup); padding: var(--spasi-3) 0; }
+
+/* Form */
+.form-grid { display: grid; gap: var(--spasi-2); grid-template-columns: 1fr; max-width: 560px; }
+.field label { display: block; font-weight: 500; margin-bottom: 4px; }
+.field input, .field select {
+  width: 100%; padding: 10px 12px; font: inherit;
+  border: 1px solid #9CA3AF; border-radius: var(--radius); background: var(--putih);
+}
+.field input[aria-invalid="true"] { border-color: var(--galat); }
+.galat { color: var(--galat); font-size: .875rem; min-height: 1.2em; display: block; }
+.pesan { margin-top: var(--spasi-2); font-weight: 500; }
+.pesan.sukses { color: var(--sukses); }
+.pesan.gagal { color: var(--galat); }
+.pendaftar { padding-left: var(--spasi-3); }
+
+/* Footer */
+.situs-footer { background: var(--teks); color: #E0E7FF; padding: var(--spasi-3); text-align: center; }
