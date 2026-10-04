@@ -96,3 +96,97 @@ if (kolomCari) {
 }
 
 tampilkanEvent();
+
+/* ===== 5. FORM PENDAFTARAN ===== */
+const form = document.querySelector("#form-daftar");
+
+if (form) {
+  const pilihEvent = document.querySelector("#pilih-event");
+  const pesan = document.querySelector("#pesan");
+  const daftarPendaftar = document.querySelector("#daftar-pendaftar");
+
+  function isiPilihan() {
+    pilihEvent.innerHTML = "";
+    for (const e of events) {
+      pilihEvent.innerHTML += `<option value="${e.id}">${e.judul}</option>`;
+    }
+    const idDariUrl = new URLSearchParams(location.search).get("id");
+    if (idDariUrl) pilihEvent.value = idDariUrl;
+  }
+
+  function tampilkanPendaftar() {
+    if (pendaftar.length === 0) {
+      daftarPendaftar.innerHTML = "<li>Belum ada pendaftar.</li>";
+      return;
+    }
+    daftarPendaftar.innerHTML = "";
+    for (const p of pendaftar) {
+      daftarPendaftar.innerHTML += `<li>${p.nama} (${p.nim}) - ${p.judulEvent}</li>`;
+    }
+  }
+
+  function tampilkanGalat(id, teks) {
+    document.querySelector("#galat-" + id).textContent = teks;
+    document.querySelector("#" + id).setAttribute("aria-invalid", teks !== "");
+  }
+
+  function formValid(nama, nim, email) {
+    let valid = true;
+
+    if (nama.length < 3) {
+      tampilkanGalat("nama", "Nama minimal 3 karakter.");
+      valid = false;
+    } else {
+      tampilkanGalat("nama", "");
+    }
+
+    if (nim.length < 8 || isNaN(nim)) {
+      tampilkanGalat("nim", "NIM berupa angka, minimal 8 digit.");
+      valid = false;
+    } else {
+      tampilkanGalat("nim", "");
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+      tampilkanGalat("email", "Masukkan email yang valid.");
+      valid = false;
+    } else {
+      tampilkanGalat("email", "");
+    }
+
+    return valid;
+  }
+
+  form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+
+    const nama = document.querySelector("#nama").value.trim();
+    const nim = document.querySelector("#nim").value.trim();
+    const email = document.querySelector("#email").value.trim();
+
+    if (!formValid(nama, nim, email)) {
+      pesan.textContent = "Periksa kembali isian kamu.";
+      pesan.className = "pesan gagal";
+      return;
+    }
+
+    const e = events.find((item) => item.id === Number(pilihEvent.value));
+
+    if (e.kuota === 0) {
+      pesan.textContent = "Kuota event ini sudah penuh. Pilih event lain.";
+      pesan.className = "pesan gagal";
+      return;
+    }
+
+    e.kuota = e.kuota - 1;
+    pendaftar.push({ nama: nama, nim: nim, judulEvent: e.judul });
+
+    pesan.textContent = "Terima kasih, kamu terdaftar di " + e.judul + ".";
+    pesan.className = "pesan sukses";
+    form.reset();
+    tampilkanPendaftar();
+  });
+
+  isiPilihan();
+  tampilkanPendaftar();
+}
