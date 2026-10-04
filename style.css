@@ -86,3 +86,37 @@ section { margin-bottom: var(--spasi-4); }
 .btn-aksen:hover { background: #D98A06; }
 .btn-kecil { padding: 6px var(--spasi-2); font-size: .9rem; }
 .btn[aria-disabled="true"] { background: #D1D5DB; color: #4B5563; pointer-events: none; }
+
+/* Filter dan pencarian (Flexbox) */
+.filter { display: flex; flex-wrap: wrap; gap: var(--spasi-1); margin-bottom: var(--spasi-2); }
+.chip {
+  border: 1px solid var(--utama); background: var(--netral); color: var(--utama-gelap);
+  border-radius: 999px; padding: 6px var(--spasi-2); font: 500 .9rem var(--font-body); cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--utama); color: var(--putih); }
+.cari {
+  width: 100%; max-width: 420px; margin-bottom: var(--spasi-3);
+  padding: 10px 12px; font: inherit;
+  border: 1px solid #9CA3AF; border-radius: var(--radius);
+}
+
+/* Daftar kartu (CSS Grid): mobile 1 kolom */
+.daftar-event { display: grid; gap: var(--spasi-3); grid-template-columns: 1fr; }
+.kartu {
+  border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden;
+  background: var(--putih); display: flex; flex-direction: column;
+  transition: border-color .15s, transform .15s;
+}
+.kartu:hover { border-color: var(--utama); transform: translateY(-2px); }
+.kartu img {
+  width: 100%; height: 130px; object-fit: cover; display: block;
+  background: var(--netral); color: var(--utama-gelap);
+  font-weight: 500; text-align: center; line-height: 130px;
+}
+.kartu-isi { padding: var(--spasi-2); display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.kartu-isi .btn { margin-top: auto; align-self: flex-start; }
+.meta { color: var(--teks-redup); font-size: .9rem; }
+.status { display: inline-block; font-size: .8rem; font-weight: 500; padding: 2px 10px; border-radius: 999px; align-self: flex-start; }
+.status.tersedia { background: #DCFCE7; color: #14532D; }
+.status.penuh { background: #FEE2E2; color: #7F1D1D; }
+.kosong { color: var(--teks-redup); padding: var(--spasi-3) 0; }
