@@ -12,3 +12,13 @@ const pendaftar = [];
 
 let kategoriAktif = "semua";
 let kataCari = "";
+
+/* ===== 2. MENU HAMBURGER ===== */
+const tombolMenu = document.querySelector("#menu-toggle");
+const menuNav = document.querySelector("#nav-menu");
+
+tombolMenu.addEventListener("click", () => {
+  menuNav.classList.toggle("aktif");
+  const terbuka = menuNav.classList.contains("aktif");
+  tombolMenu.setAttribute("aria-expanded", terbuka);
+});
